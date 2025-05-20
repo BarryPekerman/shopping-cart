@@ -1,0 +1,41 @@
+# Ignore everything by default
+*
+
+# But allow this gitignore file itself
+!.gitignore
+
+# Allow core files and folders
+!docker-compose.yml
+!frontend/
+!frontend/nginx.conf
+!frontend/package.json
+!frontend/vite.config.js
+!frontend/src/
+!frontend/public/
+
+# Kafka consumer source
+!kafka_consumer/
+!kafka_consumer/consumer/consumer.py
+!kafka_consumer/requirements.txt
+!kafka_consumer/Dockerfile
+!kafka_consumer/consumer/
+!kafka_consumer/setup.py
+
+# Backend API
+!backend_api/
+!backend_api/app/app.py
+!backend_api/app/
+!backend_api/Dockerfile
+!backend_api/requirements.txt
+!backend_api/setup.py
+
+# Prevent common junk
+**/__pycache__/
+**/*.pyc
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.venv/
+*.log
+*.env
+
