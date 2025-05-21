@@ -1,5 +1,5 @@
 from kafka import KafkaConsumer, errors
-from pymongo import MongoClient
+#from pymongo import MongoClient
 import json, time
 
 def wait_for_kafka_consumer(topic, max_retries=10, delay=5):
@@ -22,13 +22,11 @@ def wait_for_kafka_consumer(topic, max_retries=10, delay=5):
 consumer = wait_for_kafka_consumer("purchase_requests")
 
 # Connect to MongoDB
-mongo = MongoClient("mongodb://mongodb:27017/")
-collection = mongo["shopping"]["purchases"]
+#mongo = MongoClient("mongodb://mongodb:27017/")
+#collection = mongo["shopping"]["purchases"]
 
 print("Consumer is running...")
 
 for message in consumer:
     data = message.value
-    print(f"Inserting: {data}")
-    collection.insert_one(data)
-
+    print(f"Received message: {data}")

@@ -45,7 +45,6 @@ services:
       - "5000:5000"
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - MONGO_URI=mongodb://mongodb:27017/
     depends_on:
       kafka:
         condition: service_healthy
