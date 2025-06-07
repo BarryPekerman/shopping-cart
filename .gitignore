@@ -4,35 +4,37 @@
 # But allow this gitignore file itself
 !.gitignore
 
+# Allow src files
+!src/
+
 # Allow core files and folders
 !docker-compose.yml
-!frontend/
-!frontend/nginx.conf
-!frontend/package.json
-!frontend/vite.config.js
-!frontend/src/
-!frontend/public/
-
-# Kafka consumer source
-!kafka_consumer/
-!kafka_consumer/consumer/consumer.py
-!kafka_consumer/requirements.txt
-!kafka_consumer/Dockerfile
-!kafka_consumer/consumer/
-!kafka_consumer/setup.py
+!src/frontend/
+!src/frontend/nginx.conf
+!src/frontend/package.json
+!src/frontend/vite.config.js
+!src/frontend/src/
+!src/frontend/public/
 
 # Backend API
-!backend_api/
-!backend_api/app/app.py
-!backend_api/app/
-!backend_api/Dockerfile
-!backend_api/requirements.txt
-!backend_api/setup.py
+!src/backend_api/
+!src/backend_api/app/
+!src/backend_api/app/app.py
+!src/backend_api/app/__init__.py
+!src/backend_api/Dockerfile
+!src/backend_api/requirements.txt
+!src/backend_api/setup.py
 
 #helm files
 !helm/
 !helm/backend
 !helm/backend/templates
+!helm/frontend
+!helm/frontend/templates
+!helm/kafka
+!helm/kafka/Dockerfile.connect
+!helm/mongodb
+!helm/mongodb/mongo-sink.json
 !*.yaml
 
 

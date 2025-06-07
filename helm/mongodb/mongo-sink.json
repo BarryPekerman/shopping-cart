@@ -1,0 +1,16 @@
+{
+  "name": "mongo-sink",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "tasks.max": "1",
+    "topics": "purchase_requests",
+    "connection.uri": "mongodb://mongodb:27017",
+    "database": "shopping",
+    "collection": "purchases",
+
+    "key.converter":   "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}
+

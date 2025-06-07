@@ -1,0 +1,20 @@
+architecture: standalone
+
+auth:
+  enabled: false
+
+persistence:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+service:
+  type: ClusterIP
+  # port is left at the chart default (27017)
+

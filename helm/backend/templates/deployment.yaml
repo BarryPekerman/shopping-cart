@@ -1,24 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: "{{ .Release.Name }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: "{{ .Release.Name }}"
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app: "{{ .Release.Name }}"
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: "{{ .Release.Name }}"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           ports:
-            - containerPort: 5000
+            - containerPort: {{ .Values.service.port }}
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "{{ .Values.env.KAFKA_BOOTSTRAP_SERVERS }}"
+            - name: MONGO_URI
+              value: "{{ .Values.env.MONGO_URI }}"
+            - name: KAFKA_INIT_RETRIES
+              value: "{{ .Values.env.KAFKA_INIT_RETRIES }}"
+            - name: KAFKA_RETRY_BACKOFF
+              value: "{{ .Values.env.KAFKA_RETRY_BACKOFF }}"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.service.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+{{ toYaml .Values.resources | nindent 12 }}
 

@@ -10,7 +10,17 @@ service:
   port: 5000
 
 env:
-  KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+  KAFKA_BOOTSTRAP_SERVERS: "kafka.kafka-stack.svc.cluster.local:9092"
+  MONGO_URI:           "mongodb://mongodb.kafka-stack.svc.cluster.local:27017/"
+  KAFKA_INIT_RETRIES:  "5"
+  KAFKA_RETRY_BACKOFF: "2"
+#links are modular, adding kafka-stack as the namespace of their services
 
-resources: {}
+resources:
+  requests:
+    cpu:    100m
+    memory: 128Mi
+  limits:
+    cpu:    200m
+    memory: 256Mi
 

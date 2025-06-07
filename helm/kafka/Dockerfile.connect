@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------------
+# Build a Kafka Connect (distributed) image, bundling the MongoDB Connector JAR.
+# -----------------------------------------------------------------------------
+
+# Use Bitnami’s Kafka image (includes both broker & Connect scripts)
+FROM docker.io/bitnami/kafka:3.9.0-debian-12-r13
+
+# Ensure the plugin directory exists
+RUN mkdir -p /opt/bitnami/kafka/plugins
+
+# Download the MongoDB Kafka Connector into the plugins folder
+RUN curl --silent --location \
+  https://repo1.maven.org/maven2/org/mongodb/kafka/mongo-kafka-connect/1.10.1/mongo-kafka-connect-1.10.1-all.jar \
+  --output /opt/bitnami/kafka/plugins/mongo-kafka-connect-1.10.1-all.jar
+
+# The Helm Deployment will invoke connect-distributed.sh explicitly,
+# pointing at /opt/bitnami/kafka/config/connect-distributed.properties.

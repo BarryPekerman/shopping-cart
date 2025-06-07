@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: barrype/nginx-frontend
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: ClusterIP
@@ -19,4 +19,8 @@ ingress:
         - path: /
           pathType: Prefix
   tls: []
+
+backend:
+  host: flask-backend
+  port: "5000"
 
