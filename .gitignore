@@ -8,13 +8,12 @@
 !src/
 
 # Allow core files and folders
-!docker-compose.yml
 !src/frontend/
-!src/frontend/nginx.conf
-!src/frontend/package.json
-!src/frontend/vite.config.js
-!src/frontend/src/
-!src/frontend/public/
+!src/frontend/Dockerfile
+!src/frontend/app.js
+!src/frontend/index.html
+!src/frontend/nginx.conf.template
+!src/frontend/style.css
 
 # Backend API
 !src/backend_api/
