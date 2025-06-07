@@ -29,6 +29,13 @@
 !backend_api/requirements.txt
 !backend_api/setup.py
 
+#helm files
+!helm/
+!helm/backend
+!helm/backend/templates
+!*.yaml
+
+
 # Prevent common junk
 **/__pycache__/
 **/*.pyc
