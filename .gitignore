@@ -3,6 +3,7 @@
 
 # But allow this gitignore file itself
 !.gitignore
+!README.md
 
 # Allow src files
 !src/
