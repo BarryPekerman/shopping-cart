@@ -12,7 +12,7 @@ Set-up mongo sink:
 1) Port-forward Connect’s REST API
 kubectl port-forward svc/kafka-connect 8083:8083 -n kafka-stack &
 
-2) Apply the connector JSON
+2) Apply the connector JSON - mongo-sink.json is at the working dir (helm/mongodb/mongo-sink.json)
 curl -X POST http://127.0.0.1:8083/connectors \
   -H "Content-Type: application/json" \
   --data @mongo-sink.json
